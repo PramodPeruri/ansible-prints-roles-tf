@@ -1,0 +1,15 @@
+[Unit]
+Description=Catalogue Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/app/catalogue
+Environment=MONGO_HOST={{ MONGODB_HOST }}
+Environment=MONGO_PORT=27017
+ExecStart=/bin/node /app/catalogue/server.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
